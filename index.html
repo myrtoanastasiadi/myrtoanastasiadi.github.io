@@ -93,5 +93,32 @@
       localStorage.setItem('portfolio-theme', nextTheme);
     });
   </script>
+  <script>
+    const originalContactForm = document.querySelector('#contact-form');
+    const directContactForm = originalContactForm.cloneNode(true);
+    originalContactForm.replaceWith(directContactForm);
+    const directStatus = directContactForm.querySelector('#form-status');
+    const submitFrame = document.createElement('iframe');
+    submitFrame.name = 'contact-submit-frame';
+    submitFrame.hidden = true;
+    document.body.appendChild(submitFrame);
+    directContactForm.action = 'https://formsubmit.co/myrtoanastasiadii@gmail.com';
+    directContactForm.method = 'POST';
+    directContactForm.target = submitFrame.name;
+    directContactForm.addEventListener('submit', () => {
+      const button = directContactForm.querySelector('button');
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      directStatus.className = 'form-status';
+      directStatus.textContent = '';
+      window.setTimeout(() => {
+        directContactForm.reset();
+        button.disabled = false;
+        button.textContent = 'Send message ↗';
+        directStatus.className = 'form-status success';
+        directStatus.textContent = 'Thanks — your message has been sent.';
+      }, 700);
+    });
+  </script>
 </body>
 </html>
