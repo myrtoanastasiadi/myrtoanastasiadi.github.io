@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Myrto Anastasiadi Alexiou, Informatics student at AUEB." />
+  <title>Myrto Anastasiadi Alexiou — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#f7faff; --muted:#bed0ef; --accent:#c5efff; --accent-ink:#07245b; --blue:#07133e; --line:rgba(213,229,255,.16); --panel:rgba(14,29,83,.46); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); font-family:Manrope,system-ui,sans-serif; background:radial-gradient(circle at 92% 3%,#173b98 0,transparent 29rem),radial-gradient(circle at 8% 38%,#17266c 0,transparent 34rem),linear-gradient(135deg,#01051a 0%,#04123d 48%,#071e5c 100%); overflow-x:hidden; }
+    body::before { content:""; position:fixed; inset:0; z-index:-1; opacity:.18; pointer-events:none; background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px); background-size:64px 64px; mask-image:linear-gradient(to bottom,black,transparent 72%); }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1140px,calc(100% - 2.5rem)); margin:auto; }
+    .nav { height:78px; display:flex; justify-content:space-between; align-items:center; }
+    .mark { display:block; font:500 .68rem/1.2 "DM Mono",monospace; letter-spacing:.07em; max-width:300px; }
+    .links { display:flex; gap:1.4rem; align-items:center; color:var(--muted); font-size:.82rem; font-weight:700; }
+    .links a { transition:color .2s; } .links a:hover { color:var(--accent); }
+    .nav-contact { border:1px solid var(--line); padding:.55rem .85rem; border-radius:8px; color:var(--ink)!important; }
+    .nav-contact:hover { border-color:var(--accent); }
+    .hero { min-height:calc(100svh - 78px); display:grid; align-content:center; padding:5rem 0 7rem; position:relative; }
+    .eyebrow, .section-label { color:var(--accent); font:500 .72rem/1 "DM Mono",monospace; letter-spacing:.14em; text-transform:uppercase; }
+    h1 { max-width:1040px; margin:1.25rem 0 1.3rem; font-size:clamp(3.3rem,7.6vw,6.75rem); line-height:.95; letter-spacing:-.07em; font-weight:800; }
+    h1 span { color:var(--accent); }
+    .mobile-break { display:none; }
+    .hero p { max-width:510px; color:var(--muted); font-size:clamp(1rem,2vw,1.27rem); line-height:1.65; margin:0; }
+    .cta { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:2.2rem; }
+    .button { padding:.83rem 1.15rem; border-radius:8px; display:inline-flex; align-items:center; gap:.55rem; font-size:.85rem; font-weight:800; transition:transform .2s,background .2s; }
+    .button:hover { transform:translateY(-3px); } .button.primary { background:var(--accent); color:var(--accent-ink); } .button.secondary { border:1px solid var(--line); background:rgba(255,255,255,.035); }
+    .scroll-note { position:absolute; bottom:2rem; right:0; color:var(--muted); writing-mode:vertical-rl; font:400 .65rem/1 "DM Mono",monospace; letter-spacing:.1em; }
+    section { padding:6.7rem 0; border-top:1px solid var(--line); }
+    .section-top { display:grid; grid-template-columns:180px 1fr; gap:2rem; margin-bottom:3rem; }
+    h2 { font-size:clamp(2.2rem,4vw,4rem); line-height:1; letter-spacing:-.055em; margin:0; }
+    .about-grid { display:grid; grid-template-columns:1.4fr .85fr; gap:3rem; align-items:start; }
+    .about-copy { font-size:clamp(1.12rem,2vw,1.45rem); line-height:1.7; margin:0; max-width:690px; }
+    .profile-card { background:linear-gradient(135deg,rgba(108,190,255,.16),rgba(7,23,77,.34)); border:1px solid var(--line); border-radius:12px; padding:1.5rem; }
+    .profile-card p { color:var(--muted); line-height:1.55; margin:.3rem 0 1.15rem; font-size:.9rem; } .profile-card p:last-child{ margin-bottom:0; }
+    .profile-card strong { color:var(--accent); font:500 .7rem "DM Mono",monospace; letter-spacing:.08em; text-transform:uppercase; }
+    .skill-groups { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+    .skill-group { border-top:2px solid var(--accent); padding:1.1rem 0; }
+    h3 { margin:0 0 .9rem; font-size:.95rem; } .tags { display:flex; flex-wrap:wrap; gap:.5rem; }
+    .tag { border:1px solid var(--line); background:rgba(255,255,255,.055); border-radius:999px; padding:.42rem .72rem; color:#dde6ff; font:400 .76rem "DM Mono",monospace; }
+    .cards { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+    .card { min-height:145px; padding:1.35rem; border:1px solid var(--line); background:var(--panel); border-radius:10px; position:relative; transition:transform .25s,border-color .25s,background .25s; }
+    .card:hover { transform:translateY(-5px); border-color:rgba(197,239,255,.72); background:rgba(29,68,139,.54); } .card .num { color:var(--accent); font:400 .68rem "DM Mono",monospace; } .card h3 { font-size:1rem; line-height:1.4; margin:1.25rem 0 .3rem; max-width:310px; } .card p { color:var(--muted); margin:0; font-size:.78rem; }
+    .coursework { display:flex; flex-wrap:wrap; gap:.7rem; max-width:820px; } .course { padding:.75rem 1rem; border-radius:8px; background:rgba(168,194,255,.1); border:1px solid var(--line); font-weight:700; font-size:.88rem; }
+    .involvement { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; border:1px solid var(--line); background:var(--line); border-radius:10px; overflow:hidden; } .event { padding:1.7rem; background:#0a2068; } .event time { color:var(--accent); font:400 .7rem "DM Mono",monospace; } .event h3 { font-size:1.15rem; margin:.7rem 0 .35rem; }.event p { margin:0; color:var(--muted); font-size:.88rem; }
+    .contact { padding-bottom:3.5rem; }.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; }.contact-copy p { color:var(--muted); font-size:1.08rem; line-height:1.7; max-width:430px; }.socials { display:flex; gap:.7rem; margin-top:1.8rem; }.social { border:1px solid var(--line); border-radius:8px; padding:.7rem .85rem; font:500 .73rem "DM Mono",monospace; transition:.2s; }.social:hover { background:var(--accent); color:var(--blue); border-color:var(--accent); }
+    form { display:grid; gap:.75rem; } input,textarea { width:100%; background:rgba(1,11,48,.34); color:var(--ink); border:1px solid var(--line); border-radius:7px; padding:.9rem; font:inherit; font-size:.85rem; outline:none; } input:focus,textarea:focus { border-color:var(--accent); } textarea { min-height:105px; resize:vertical; } .submit { justify-content:center; border:0; cursor:pointer; }
+    footer { border-top:1px solid var(--line); padding:1.3rem 0; color:var(--muted); font:400 .68rem "DM Mono",monospace; display:flex; gap:1.1rem; justify-content:space-between; }
+    .reveal { opacity:0; transform:translateY(22px); transition:opacity .65s ease,transform .65s ease; }.reveal.visible { opacity:1; transform:none; }
+    @media (max-width:700px) { .wrap{width:min(100% - 2rem,1140px)} .links a:not(.nav-contact){display:none}.nav{height:68px}.mark{font-size:.59rem;max-width:205px}.hero{min-height:calc(100svh - 68px);padding:3rem 0 5rem}.mobile-break{display:block}.scroll-note{display:none}section{padding:4.3rem 0}.section-top{display:block;margin-bottom:2rem}.section-label{display:block;margin-bottom:1rem}.about-grid,.contact-grid,.skill-groups,.cards,.involvement{grid-template-columns:1fr;gap:1rem}.about-grid{gap:2rem}.card{min-height:125px}footer{display:block;line-height:1.8} }
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.button:hover,.card:hover{transform:none}}
+  </style>
+</head>
+<body>
+  <header class="wrap nav"><a class="mark" href="#top">MYRTO ANASTASIADI ALEXIOU</a><nav class="links" aria-label="Main navigation"><a href="#about">About</a><a href="#skills">Skills</a><a href="#certifications">Certifications</a><a class="nav-contact" href="#contact">Contact ↗</a></nav></header>
+  <main id="top">
+    <section class="wrap hero"><div class="reveal"><div class="eyebrow">B.Sc. Informatics · AUEB · Athens, GR</div><h1>Myrto<br><span>Anastasiadi <br class="mobile-break">Alexiou.</span></h1><p>Informatics student, building things with code.</p><div class="cta"><a class="button primary" href="#about">About Me <span>↓</span></a><a class="button secondary" href="#contact">Get in Touch <span>↗</span></a></div></div><div class="scroll-note">SCROLL TO EXPLORE</div></section>
+    <section id="about"><div class="wrap"><div class="section-top reveal"><span class="section-label">01 / About</span><h2>Learning the foundations.<br>Making them useful.</h2></div><div class="about-grid reveal"><p class="about-copy">I’m a second-year B.Sc. Informatics student at Athens University of Economics and Business, building a solid foundation in computer science and practical programming.</p><aside class="profile-card"><strong>At a glance</strong><p>Based in Athens, Greece<br>Greek — native<br>English — C2</p><strong>Focus right now</strong><p>Core computer science, practical programming, and getting involved in the local tech community.</p></aside></div></div></section>
+    <section id="skills"><div class="wrap"><div class="section-top reveal"><span class="section-label">02 / Skills</span><h2>A focused toolkit,<br>with room to grow.</h2></div><div class="skill-groups reveal"><div class="skill-group"><h3>Programming</h3><div class="tags"><span class="tag">Python</span><span class="tag">Java</span></div></div><div class="skill-group"><h3>Tools</h3><div class="tags"><span class="tag">Microsoft Office</span><span class="tag">WordPress</span></div></div><div class="skill-group"><h3>Other</h3><div class="tags"><span class="tag">Negotiation</span><span class="tag">Greek / English</span></div></div></div></div></section>
+    <section id="certifications"><div class="wrap"><div class="section-top reveal"><span class="section-label">03 / Certifications</span><h2>Learning beyond<br>the lecture hall.</h2></div><div class="cards reveal"><article class="card"><span class="num">01 — 2026</span><h3>Claude 101</h3><p>Anthropic</p></article><article class="card"><span class="num">02 — 2026</span><h3>Artificial Intelligence Fundamentals</h3><p>IBM SkillsBuild</p></article><article class="card"><span class="num">03 — 2026</span><h3>Business Analysis &amp; Process Management</h3><p>Coursera</p></article><article class="card"><span class="num">04 — 2026</span><h3>Negotiation Mastery</h3><p>WorkEarly</p></article><article class="card"><span class="num">05 — 2026</span><h3>Build a Free Website with WordPress</h3><p>Coursera</p></article></div></div></section>
+    <section id="coursework"><div class="wrap"><div class="section-top reveal"><span class="section-label">04 / Coursework</span><h2>The current<br>foundation.</h2></div><div class="coursework reveal"><span class="course">Analysis I</span><span class="course">Discrete Math</span><span class="course">Python Programming</span><span class="course">Java Programming</span><span class="course">Logic Systems</span><span class="course">Probability Theory</span><span class="course">Linear Algebra</span></div></div></section>
+    <section id="involvement"><div class="wrap"><div class="section-top reveal"><span class="section-label">05 / Involvement</span><h2>Showing up for<br>what’s next.</h2></div><div class="involvement reveal"><article class="event"><time>2026 / THINKBIZ</time><h3>TechBiz 2026</h3><p>Attendee at the startup and technology event held by ThinkBiz.</p></article><article class="event"><time>2026 / UNIAI</time><h3>Makeathon 2026</h3><p>Volunteer supporting the Makeathon by UniAI.</p></article></div></div></section>
+    <section id="contact" class="contact"><div class="wrap"><div class="section-top reveal"><span class="section-label">06 / Contact</span><h2>Let’s start<br>a conversation.</h2></div><div class="contact-grid reveal"><div class="contact-copy"><p>Have an idea, opportunity, or question? Send a note. I’d be glad to connect.</p><div class="socials"><a class="social" href="mailto:myrtoanastasiadii@gmail.com">EMAIL ↗</a><a class="social" href="https://www.linkedin.com/search/results/people/?keywords=Myrto%20Anastasiadi%20Alexiou" target="_blank" rel="noreferrer">LINKEDIN ↗</a><a class="social" href="https://github.com/myrtoanastasiadi" target="_blank" rel="noreferrer">GITHUB ↗</a></div></div><form action="mailto:myrtoanastasiadii@gmail.com" method="post" enctype="text/plain"><label><span class="section-label">Name</span><input name="name" required placeholder="Your name" /></label><label><span class="section-label">Email</span><input type="email" name="email" required placeholder="you@example.com" /></label><label><span class="section-label">Message</span><textarea name="message" required placeholder="What would you like to say?"></textarea></label><button class="button primary submit" type="submit">Send message ↗</button></form></div></div></section>
+  </main>
+  <footer class="wrap"><span>© 2026 MYRTO</span><span>ANASTASIADI&nbsp;ALEXIOU</span><span>DESIGNED &amp; BUILT WITH INTENT</span></footer>
+  <script>const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));</script>
+</body>
+</html>
