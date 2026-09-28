@@ -4,227 +4,367 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myrto Anastasiadi Alexiou - Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #581c87;
+            --primary-light: #7e22ce;
+            --bg-alt: #faf5ff;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --white: #ffffff;
+        }
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
-            color: #1f2937;
+            color: var(--text-main);
             line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
             display: flex;
             justify-content: center;
-            padding: 2rem;
+            padding: 1rem 2rem;
         }
 
-        .resume-container {
-            background-color: #ffffff;
-            width: 100%;
-            max-width: 1000px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            border-radius: 8px;
-            overflow: hidden;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Layout */
+        section {
+            padding: 6rem 2rem;
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
 
-        header {
-            background-color: #111827;
-            color: #ffffff;
-            padding: 3rem 2rem;
+        .container {
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
             text-align: center;
+            font-weight: 700;
         }
 
-        header h1 {
-            font-size: 2.25rem;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
+        .bg-alt {
+            background-color: var(--bg-alt);
         }
 
-        .contact-info {
+        /* Hero Section */
+        #home {
+            background-color: var(--primary);
+            color: var(--white);
+            min-height: 80vh;
+            justify-content: center;
+            text-align: center;
+            padding-top: 8rem;
+        }
+
+        #home h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+
+        #home p {
+            font-size: 1.25rem;
+            color: #e9d5ff;
+            margin-bottom: 2rem;
+        }
+
+        .hero-links {
             display: flex;
             justify-content: center;
             gap: 1.5rem;
             flex-wrap: wrap;
-            font-size: 0.9rem;
-            color: #d1d5db;
-            margin-top: 1rem;
         }
 
-        .contact-info a {
-            color: #60a5fa;
+        .hero-links a {
+            color: var(--white);
             text-decoration: none;
-            transition: color 0.2s;
+            border: 2px solid var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.2s;
         }
 
-        .contact-info a:hover {
-            color: #93c5fd;
+        .hero-links a:hover {
+            background-color: var(--white);
+            color: var(--primary);
         }
 
-        .main-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
+        /* Education & Experience */
+        .timeline-item {
+            background: var(--white);
+            border-left: 4px solid var(--primary);
             padding: 2rem;
-            gap: 3rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-radius: 0 4px 4px 0;
         }
 
-        section {
-            margin-bottom: 2rem;
+        .timeline-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
         }
 
-        h2 {
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #4b5563;
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 0.5rem;
+        .timeline-item .meta {
+            color: var(--primary-light);
+            font-weight: 600;
+            font-size: 0.9rem;
             margin-bottom: 1rem;
         }
 
-        h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #111827;
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
         }
 
-        .date {
-            font-size: 0.85rem;
-            color: #6b7280;
+        .skill-category {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--primary);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            color: var(--text-muted);
+        }
+
+        .skill-category ul li {
             margin-bottom: 0.5rem;
-        }
-
-        p, ul {
-            font-size: 0.95rem;
-            color: #374151;
-        }
-
-        ul {
-            list-style-type: none;
-        }
-
-        ul li {
-            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
             position: relative;
-            padding-left: 1rem;
         }
 
-        ul li::before {
-            content: "•";
-            color: #9ca3af;
+        .skill-category ul li::before {
+            content: "■";
+            color: var(--primary);
             position: absolute;
             left: 0;
+            font-size: 0.6rem;
+            top: 0.35rem;
         }
 
-        .sidebar h2 {
-            margin-top: 0;
+        /* Coursework Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
         }
 
-        .skill-group {
-            margin-bottom: 1rem;
-        }
-
-        .skill-group strong {
-            display: block;
+        .tag {
+            background-color: var(--bg-alt);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
             font-size: 0.9rem;
-            color: #111827;
-            margin-bottom: 0.2rem;
+            font-weight: 600;
+            border: 1px solid #e9d5ff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-main);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer a {
+            color: #e9d5ff;
+            text-decoration: none;
         }
 
         @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
+            #home h1 { font-size: 2.5rem; }
+            .nav-links { display: none; /* In a real app, add a hamburger menu */ }
         }
     </style>
 </head>
 <body>
 
-<div class="resume-container">
-    <header>
-        <h1>Myrto Anastasiadi Alexiou[cite: 1]</h1>
-        <div class="contact-info">
-            <span>Athens, Greece[cite: 1]</span>
-            <span>+306940562150[cite: 1]</span>
-            <a href="mailto:myrtoanastasiadii@gmail.com">myrtoanastasiadii@gmail.com[cite: 1]</a>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#involvement">Involvement</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+        </ul>
+    </nav>
+
+    <section id="home">
+        <div class="container">
+            <h1>Myrto Anastasiadi Alexiou[cite: 1]</h1>
+            <p>Athens, Greece[cite: 1] | +306940562150[cite: 1]</p>
+            <div class="hero-links">
+                <a href="mailto:myrtoanastasiadii@gmail.com">myrtoanastasiadii@gmail.com[cite: 1]</a>
+                <a href="https://myrtoanastasiadi.github.io" target="_blank">Portfolio[cite: 1]</a>
+                <a href="https://linkedin.com/" target="_blank">LinkedIn[cite: 1]</a>
+                <a href="https://github.com/myrtoanastasiadi" target="_blank">GitHub[cite: 1]</a>
+            </div>
         </div>
-        <div class="contact-info">
-            <a href="https://myrtoanastasiadi.github.io">Portfolio[cite: 1]</a>
-            <a href="https://linkedin.com/">LinkedIn: Myrto Anastasiadi Alexiou[cite: 1]</a>
-            <a href="https://github.com/myrtoanastasiadi">GitHub[cite: 1]</a>
+    </section>
+
+    <section id="education" class="bg-alt">
+        <div class="container">
+            <h2 class="section-title">Education[cite: 1]</h2>
+            <div class="timeline-item">
+                <h3>B.Sc. Informatics — Athens University of Economics and Business[cite: 1]</h3>
+                <div class="meta">Oct. 2025 – Present[cite: 1]</div>
+            </div>
+            <div class="timeline-item">
+                <h3>High School Diploma — Keratea High School[cite: 1]</h3>
+                <div class="meta">Graduated 2025[cite: 1]</div>
+            </div>
+            
+            <h3 style="text-align: center; margin: 3rem 0 1.5rem; color: var(--primary);">Coursework[cite: 1]</h3>
+            <div class="tags">
+                <span class="tag">Analysis I[cite: 1]</span>
+                <span class="tag">Discrete Math[cite: 1]</span>
+                <span class="tag">Python Programming[cite: 1]</span>
+                <span class="tag">Java Programming[cite: 1]</span>
+                <span class="tag">Logic Systems Design[cite: 1]</span>
+                <span class="tag">Probability Theory[cite: 1]</span>
+                <span class="tag">Linear Algebra[cite: 1]</span>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <div class="main-content">
-        <div class="sidebar">
-            <section>
-                <h2>Skills[cite: 1]</h2>
-                <div class="skill-group">
-                    <strong>Programming[cite: 1]</strong>
-                    <p>Python, Java, HTML[cite: 1]</p>
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills[cite: 1]</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming[cite: 1]</h3>
+                    <ul>
+                        <li>Python[cite: 1]</li>
+                        <li>Java[cite: 1]</li>
+                        <li>HTML[cite: 1]</li>
+                    </ul>
                 </div>
-                <div class="skill-group">
-                    <strong>Tools & Software[cite: 1]</strong>
-                    <p>Microsoft Office Suite, Microsoft 365, WordPress, Windows[cite: 1]</p>
+                <div class="skill-category">
+                    <h3>Tools & Software[cite: 1]</h3>
+                    <ul>
+                        <li>Microsoft Office Suite[cite: 1]</li>
+                        <li>Microsoft 365[cite: 1]</li>
+                        <li>WordPress[cite: 1]</li>
+                        <li>Windows[cite: 1]</li>
+                    </ul>
                 </div>
-                <div class="skill-group">
-                    <strong>Languages[cite: 1]</strong>
-                    <p>Greek (Native)[cite: 1], English — C2 Proficiency (MSU Diploma)[cite: 1]</p>
+                <div class="skill-category">
+                    <h3>Languages[cite: 1]</h3>
+                    <ul>
+                        <li>Greek (Native)[cite: 1]</li>
+                        <li>English (C2 Proficiency - MSU)[cite: 1]</li>
+                    </ul>
                 </div>
-                <div class="skill-group">
-                    <strong>Other[cite: 1]</strong>
-                    <p>Negotiation, Teamwork, Adaptability[cite: 1]</p>
+                <div class="skill-category">
+                    <h3>Other[cite: 1]</h3>
+                    <ul>
+                        <li>Negotiation[cite: 1]</li>
+                        <li>Teamwork[cite: 1]</li>
+                        <li>Adaptability[cite: 1]</li>
+                    </ul>
                 </div>
-            </section>
-
-            <section>
-                <h2>Certifications[cite: 1]</h2>
-                <ul>
-                    <li>Build a free website with WordPress — Coursera (2026)[cite: 1]</li>
-                    <li>Business Analysis & Process Management — Coursera (2026)[cite: 1]</li>
-                    <li>Negotiation Mastery — WorkEarly (2026)[cite: 1]</li>
-                    <li>IBM Artificial Intelligence Fundamentals — IBM SkillsBuild (2026)[cite: 1]</li>
-                    <li>Claude 101 — Anthropic (2026)[cite: 1]</li>
-                </ul>
-            </section>
+            </div>
         </div>
+    </section>
 
-        <div class="content">
-            <section>
-                <h2>Education[cite: 1]</h2>
-                <div class="entry" style="margin-bottom: 1.5rem;">
-                    <h3>B.Sc. Informatics — Athens University of Economics and Business[cite: 1]</h3>
-                    <div class="date">Oct. 2025 – Present[cite: 1]</div>
-                </div>
-                <div class="entry">
-                    <h3>High School Diploma — Keratea High School[cite: 1]</h3>
-                    <div class="date">Graduated 2025[cite: 1]</div>
-                </div>
-            </section>
-
-            <section>
-                <h2>Coursework[cite: 1]</h2>
-                <p>Analysis I, Discrete Math, Python Programming, Java Programming, Logic Systems Design, Probability Theory, Linear Algebra[cite: 1]</p>
-            </section>
-
-            <section>
-                <h2>Extracurriculars / Involvement[cite: 1]</h2>
-                <ul>
-                    <li>Attended TechBiz 2026 – Startup and Technology Event[cite: 1]</li>
-                    <li>Volunteered at Makeathon 2026 by UniAI[cite: 1]</li>
-                </ul>
-            </section>
+    <section id="involvement" class="bg-alt">
+        <div class="container">
+            <h2 class="section-title">Extracurriculars / Involvement[cite: 1]</h2>
+            <div class="timeline-item">
+                <h3>Volunteered at Makeathon 2026 by UniAI[cite: 1]</h3>
+            </div>
+            <div class="timeline-item">
+                <h3>Attended TechBiz 2026 – Startup and Technology Event[cite: 1]</h3>
+            </div>
         </div>
-    </div>
-</div>
+    </section>
+
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications[cite: 1]</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Build a free website with WordPress[cite: 1]</h3>
+                    <ul><li>Coursera (2026)[cite: 1]</li></ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Business Analysis & Process Management[cite: 1]</h3>
+                    <ul><li>Coursera (2026)[cite: 1]</li></ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Negotiation Mastery[cite: 1]</h3>
+                    <ul><li>WorkEarly (2026)[cite: 1]</li></ul>
+                </div>
+                <div class="skill-category">
+                    <h3>IBM Artificial Intelligence Fundamentals[cite: 1]</h3>
+                    <ul><li>IBM SkillsBuild (2026)[cite: 1]</li></ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Claude 101[cite: 1]</h3>
+                    <ul><li>Anthropic (2026)[cite: 1]</li></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Myrto Anastasiadi Alexiou. All rights reserved.</p>
+        <p><a href="mailto:myrtoanastasiadii@gmail.com">Contact Me[cite: 1]</a></p>
+    </footer>
 
 </body>
 </html>
