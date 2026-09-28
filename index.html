@@ -4,168 +4,227 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myrto Anastasiadi Alexiou - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Minimalist, professional typography and layout */
-        :root { 
-            --bg-color: #ffffff; 
-            --text-main: #1a1a1a; 
-            --text-muted: #666666;
-            --border-color: #eaeaea;
-        }
-        
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            line-height: 1.6; 
-            color: var(--text-main); 
-            background: var(--bg-color); 
-            max-width: 800px; 
-            margin: 0 auto; 
-            padding: 3rem 2rem; 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
-        header { 
-            margin-bottom: 3rem; 
-            border-bottom: 1px solid var(--border-color); 
-            padding-bottom: 2rem; 
-        }
-
-        h1 { 
-            font-size: 2.5rem; 
-            margin-bottom: 0.2rem; 
-            font-weight: 600; 
-            letter-spacing: -0.02em; 
-        }
-
-        .subtitle { 
-            font-size: 1.2rem; 
-            color: var(--text-muted); 
-            margin-top: 0; 
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-links {
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            line-height: 1.6;
             display: flex;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .resume-container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 1000px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #111827;
+            color: #ffffff;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
             gap: 1.5rem;
             flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: #d1d5db;
+            margin-top: 1rem;
         }
 
-        .contact-links a { 
-            color: var(--text-main); 
-            text-decoration: none; 
-            border-bottom: 1px solid transparent; 
-            transition: border-color 0.2s ease; 
-            font-size: 0.95rem;
+        .contact-info a {
+            color: #60a5fa;
+            text-decoration: none;
+            transition: color 0.2s;
         }
 
-        .contact-links a:hover { 
-            border-bottom: 1px solid var(--text-main); 
+        .contact-info a:hover {
+            color: #93c5fd;
         }
 
-        section { 
-            margin-bottom: 3rem; 
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            padding: 2rem;
+            gap: 3rem;
         }
 
-        h2 { 
-            font-size: 1.2rem; 
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-muted);
-            border-bottom: 1px solid var(--border-color); 
-            padding-bottom: 0.5rem; 
-            margin-bottom: 1.5rem; 
-            font-weight: 600; 
+        section {
+            margin-bottom: 2rem;
         }
 
-        .grid-container { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 2rem; 
-        }
-
-        .entry { 
-            margin-bottom: 1.5rem; 
-        }
-
-        .entry-title { 
-            font-weight: 600; 
+        h2 {
             font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #4b5563;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .entry-meta { 
-            color: var(--text-muted); 
-            font-size: 0.9rem; 
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: #6b7280;
             margin-bottom: 0.5rem;
         }
 
-        ul { 
-            padding-left: 1.2rem; 
-            margin-top: 0.5rem; 
+        p, ul {
+            font-size: 0.95rem;
+            color: #374151;
         }
 
-        li { 
-            margin-bottom: 0.5rem; 
+        ul {
+            list-style-type: none;
         }
 
-        @media (max-width: 600px) {
-            .grid-container {
+        ul li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        ul li::before {
+            content: "•";
+            color: #9ca3af;
+            position: absolute;
+            left: 0;
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+        }
+
+        .skill-group {
+            margin-bottom: 1rem;
+        }
+
+        .skill-group strong {
+            display: block;
+            font-size: 0.9rem;
+            color: #111827;
+            margin-bottom: 0.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
                 grid-template-columns: 1fr;
-                gap: 1rem;
+                gap: 2rem;
             }
         }
     </style>
 </head>
 <body>
+
+<div class="resume-container">
     <header>
         <h1>Myrto Anastasiadi Alexiou[cite: 1]</h1>
-        <p class="subtitle">B.Sc. Informatics Student[cite: 1] | Data Science & Mathematics</p>
-        <div class="contact-links">
-            <a href="mailto:myrtoanastasiadii@gmail.com">Email[cite: 1]</a>
+        <div class="contact-info">
+            <span>Athens, Greece[cite: 1]</span>
+            <span>+306940562150[cite: 1]</span>
+            <a href="mailto:myrtoanastasiadii@gmail.com">myrtoanastasiadii@gmail.com[cite: 1]</a>
+        </div>
+        <div class="contact-info">
             <a href="https://myrtoanastasiadi.github.io">Portfolio[cite: 1]</a>
+            <a href="https://linkedin.com/">LinkedIn: Myrto Anastasiadi Alexiou[cite: 1]</a>
             <a href="https://github.com/myrtoanastasiadi">GitHub[cite: 1]</a>
-            <a href="https://instagram.com/datazonegr">datazonegr</a>
         </div>
     </header>
 
-    <section id="education">
-        <h2>Education[cite: 1]</h2>
-        <div class="entry">
-            <div class="entry-title">Athens University of Economics and Business[cite: 1]</div>
-            <div class="entry-meta">B.Sc. Informatics | Oct. 2025 – Present[cite: 1]</div>
-            <p>Focusing on computational logic, discrete mathematics, and software development.</p>
-        </div>
-    </section>
+    <div class="main-content">
+        <div class="sidebar">
+            <section>
+                <h2>Skills[cite: 1]</h2>
+                <div class="skill-group">
+                    <strong>Programming[cite: 1]</strong>
+                    <p>Python, Java, HTML[cite: 1]</p>
+                </div>
+                <div class="skill-group">
+                    <strong>Tools & Software[cite: 1]</strong>
+                    <p>Microsoft Office Suite, Microsoft 365, WordPress, Windows[cite: 1]</p>
+                </div>
+                <div class="skill-group">
+                    <strong>Languages[cite: 1]</strong>
+                    <p>Greek (Native)[cite: 1], English — C2 Proficiency (MSU Diploma)[cite: 1]</p>
+                </div>
+                <div class="skill-group">
+                    <strong>Other[cite: 1]</strong>
+                    <p>Negotiation, Teamwork, Adaptability[cite: 1]</p>
+                </div>
+            </section>
 
-    <section id="skills">
-        <h2>Technical Skills & Coursework[cite: 1]</h2>
-        <div class="grid-container">
-            <div>
-                <div class="entry-title">Core Skills</div>
+            <section>
+                <h2>Certifications[cite: 1]</h2>
                 <ul>
-                    <li><strong>Programming:</strong> Python, Java, HTML[cite: 1]</li>
-                    <li><strong>Tools:</strong> WordPress, Microsoft 365, Windows[cite: 1]</li>
-                    <li><strong>Languages:</strong> Greek (Native), English (C2 - MSU)[cite: 1]</li>
-                    <li><strong>Soft Skills:</strong> Event Organization, Negotiation, Teamwork, Adaptability[cite: 1]</li>
+                    <li>Build a free website with WordPress — Coursera (2026)[cite: 1]</li>
+                    <li>Business Analysis & Process Management — Coursera (2026)[cite: 1]</li>
+                    <li>Negotiation Mastery — WorkEarly (2026)[cite: 1]</li>
+                    <li>IBM Artificial Intelligence Fundamentals — IBM SkillsBuild (2026)[cite: 1]</li>
+                    <li>Claude 101 — Anthropic (2026)[cite: 1]</li>
                 </ul>
-            </div>
-            <div>
-                <div class="entry-title">Key Coursework[cite: 1]</div>
-                <ul>
-                    <li>Analysis I & Discrete Math[cite: 1]</li>
-                    <li>Probability Theory & Linear Algebra[cite: 1]</li>
-                    <li>Python & Java Programming[cite: 1]</li>
-                    <li>Logic Systems Design[cite: 1]</li>
-                </ul>
-            </div>
+            </section>
         </div>
-    </section>
 
-    <section id="experience">
-        <h2>Involvement & Certifications[cite: 1]</h2>
-        <ul>
-            <li><strong>Makeathon 2026:</strong> Volunteered behind the scenes at the UniAI event, assisting with event logistics and execution.[cite: 1]</li>
-            <li><strong>TechBiz 2026:</strong> Attended startup and technology event.[cite: 1]</li>
-            <li><strong>Certifications:</strong> IBM Artificial Intelligence Fundamentals, Claude 101 (Anthropic), Business Analysis & Process Management (Coursera).[cite: 1]</li>
-        </ul>
-    </section>
+        <div class="content">
+            <section>
+                <h2>Education[cite: 1]</h2>
+                <div class="entry" style="margin-bottom: 1.5rem;">
+                    <h3>B.Sc. Informatics — Athens University of Economics and Business[cite: 1]</h3>
+                    <div class="date">Oct. 2025 – Present[cite: 1]</div>
+                </div>
+                <div class="entry">
+                    <h3>High School Diploma — Keratea High School[cite: 1]</h3>
+                    <div class="date">Graduated 2025[cite: 1]</div>
+                </div>
+            </section>
+
+            <section>
+                <h2>Coursework[cite: 1]</h2>
+                <p>Analysis I, Discrete Math, Python Programming, Java Programming, Logic Systems Design, Probability Theory, Linear Algebra[cite: 1]</p>
+            </section>
+
+            <section>
+                <h2>Extracurriculars / Involvement[cite: 1]</h2>
+                <ul>
+                    <li>Attended TechBiz 2026 – Startup and Technology Event[cite: 1]</li>
+                    <li>Volunteered at Makeathon 2026 by UniAI[cite: 1]</li>
+                </ul>
+            </section>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
