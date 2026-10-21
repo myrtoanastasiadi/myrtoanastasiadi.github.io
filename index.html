@@ -92,8 +92,8 @@
     .field input, .field textarea { width: 100%; min-height: 44px; padding: 10px 11px; border: 1px solid var(--line); border-radius: 3px; outline: none; background: var(--paper); color: var(--ink); font-size: 16px; }
     .field input:focus, .field textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 15%, transparent); }
     .field textarea { min-height: 120px; resize: vertical; }
-    .send-button { min-height: 44px; margin-top: 16px; padding: 11px 16px; border: 0; border-radius: 3px; background: var(--accent); color: #102638; cursor: pointer; font-size: 14px; font-weight: 500; }
-    .send-button:hover { background: var(--accent); }
+    .send-button { min-height: 44px; margin-top: 16px; padding: 11px 16px; border: 1px solid var(--hero-button-bg); border-radius: 3px; background: var(--hero-button-bg); color: var(--hero-button-fg); cursor: pointer; font-size: 14px; font-weight: 500; }
+    .send-button:hover { border-color: var(--hero-button-hover); background: var(--hero-button-hover); }
     footer { padding: 30px 0 40px; color: var(--muted); font-size: 13px; }
     footer .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     @media (max-width: 900px) {
@@ -114,6 +114,9 @@
       .nav-links a { min-height: 44px; }
       .hero { grid-template-columns: 1fr; gap: 27px; padding: 56px 0 48px; }
       h1 { font-size: clamp(19px, 6.4vw, 32px); }
+      .links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+      .social-link { min-width: 0; padding: 10px 6px; gap: 5px; font-size: 12px; white-space: nowrap; }
+      .social-link svg { width: 14px; height: 14px; }
       .hero-aside { border-left: 0; border-top: 1px solid var(--line); padding: 17px 0 0; }
       section { padding: 44px 0; }
       .section-head { grid-template-columns: 1fr; gap: 10px; margin-bottom: 23px; }
@@ -127,6 +130,10 @@
       .field.full { grid-column: auto; }
       footer .wrap { align-items: flex-start; flex-direction: column; gap: 6px; }
       @supports (background: color-mix(in srgb, white, black)) { body { background-attachment: scroll; } }
+    }
+    @media (max-width: 340px) {
+      .links { gap: 6px; }
+      .social-link { padding-inline: 4px; gap: 4px; font-size: 11px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -159,7 +166,7 @@
         <div class="links">
           <a class="social-link primary-link" href="https://www.linkedin.com/in/myrto-anastasiadi-alexiou" target="_blank" rel="noreferrer">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2ZM8.34 18H5.67V9.4h2.67ZM7 8.22a1.55 1.55 0 1 1 .02-3.1A1.55 1.55 0 0 1 7 8.22ZM18.34 18h-2.67v-4.18c0-1-.02-2.28-1.39-2.28-1.39 0-1.6 1.08-1.6 2.2V18h-2.67V9.4h2.56v1.18h.04a2.8 2.8 0 0 1 2.52-1.39c2.7 0 3.2 1.78 3.2 4.1Z"/></svg>
-            LinkedIn <span aria-hidden="true">↗</span>
+            LinkedIn
           </a>
           <a class="social-link" href="https://github.com/myrtoanastasiadi" target="_blank" rel="noreferrer">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.56.1.76-.24.76-.54v-2.1c-3.1.67-3.75-1.31-3.75-1.31-.5-1.28-1.23-1.62-1.23-1.62-1.01-.69.08-.68.08-.68 1.12.08 1.7 1.15 1.7 1.15.99 1.69 2.59 1.2 3.22.91.1-.72.39-1.2.7-1.48-2.48-.28-5.09-1.24-5.09-5.52 0-1.22.44-2.21 1.15-2.99-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.05 1.14a10.6 10.6 0 0 1 5.55 0c2.12-1.44 3.05-1.14 3.05-1.14.61 1.54.23 2.68.11 2.96.71.78 1.14 1.77 1.14 2.99 0 4.29-2.61 5.23-5.1 5.5.4.35.75 1.02.75 2.06v3.06c0 .3.2.65.77.54A11.1 11.1 0 0 0 12 .9Z"/></svg>
